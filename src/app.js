@@ -27,6 +27,7 @@ import { ApiError } from "./utils/ApiError.js";
 import viewsRoute from "./routes/views.routes.js"
 import watchLaterRoute from "./routes/watchlater.routes.js"
 import historyRoute from "./routes/history.routes.js"
+import healthRoute from "./routes/health.routes.js"
 // route describing
 
 app.use("/api/v1/users", userRoute);
@@ -37,6 +38,7 @@ app.use("/api/v1/comment", commentRoute);
 app.use("/api/v1/views", viewsRoute);
 app.use("/api/v1/watch-later", watchLaterRoute);
 app.use("/api/v1/history", historyRoute);
+app.use("/api/v1/health", healthRoute);
 
 
 
