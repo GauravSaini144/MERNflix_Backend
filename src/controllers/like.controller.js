@@ -50,7 +50,7 @@ const getLikesOfVideo = asyncHandler(async(req,res)=>{
 
 
     const totalLikes = await Like.countDocuments({video:videoId});
-    console.log("total likes",totalLikes);
+    
      const isLiked  = await Like.exists(
         {
             video:videoId,

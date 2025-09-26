@@ -10,7 +10,7 @@ const uploadVideo = asyncHandler(async(req, res)=>{
    
    const videoLocalPath = req.files?.video[0].path;
    const thumbnailLocalPath = req.files?.thumbnail[0].path;
-    console.log(title, description);
+    
    if(!title?.trim()){
     throw new ApiError(400, "video title required");
    }
@@ -150,7 +150,7 @@ const getVideoFromId =asyncHandler(async(req, res)=>{
     
    ]);
     
-//    console.log(!video[0]);
+
    if(!video[0]){
     throw new ApiError(404, "Video not found");
    }
@@ -184,7 +184,6 @@ const updateVideo = asyncHandler(async(req, res)=>{
     if(!video){
         throw new ApiError(404, "Video not found or may deleted");
     }
-        console.log("-------------video.owner != req.user._id---------", video.owner.toString() !== req.user._id.toString(),video.owner, req.user._id)
 
     if(video.owner.toString()!==req.user.id.toString()){
         
@@ -256,7 +255,6 @@ const deleteVideo = asyncHandler(async(req, res)=>{
         throw new ApiError(404, "video now found or may deleted");
     }
 
-    console.log("-------------video.owner != req.user._id---------", video.owner != req.user._id,video.owner, req.user._id)
     if(video.owner.toString() !== req.user._id.toString()){
         throw new ApiError(401, "Unauthorized request to delete video");
     }

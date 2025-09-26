@@ -96,6 +96,7 @@ const registerUser = asyncHandler( async(req, res)=>{
 
 });
 
+
 const generateAccessAndRefreshToken=async(userID)=>{
    try {
       const user = await User.findById(userID);
@@ -107,7 +108,7 @@ const generateAccessAndRefreshToken=async(userID)=>{
 
  return {refreshToken, accessToken};
    } catch (error) {
-       console.log("<<<<<<Error>>>>>>", error);
+       
       throw new ApiError(500, "ERROR WHILE GENERATING ACCESS AND REFRESH TOKEN !!!!!!!!");
       
    }
@@ -118,7 +119,7 @@ const loginUser = asyncHandler( async(req, res)=>{
    // steps to create login
 
    //get data from frontend
-   console.log("--------incoming body--------", req.body);
+   
    const {identifier,password} = req.body;
     
    
@@ -242,7 +243,7 @@ const refreshUserAccessToken = asyncHandler(async(req, res)=>{
      ) 
 
    } catch (error) {
-      console.log("----Error---In---Refresh----Token", error);
+      
       throw new ApiError(401, "Invalid Access Token Error");
    }
 })
@@ -285,13 +286,7 @@ const updateUserDetails = asyncHandler(async(req, res)=>{
       throw new ApiError(400,"unauthorized request as you not loogedIn");
    }
 
-   //  const findUser = await User.findOne({
-   //    email:email,
-   //  });
-
-   //  if(findUser){
-   //    throw new ApiError(405,"Email already exist use other email");
-   //  }
+   
      const user = await User.findByIdAndUpdate(
       req.user?._id,
       {
@@ -522,7 +517,7 @@ const getUserChannelProfile = asyncHandler(async(req, res)=>{
       throw new ApiError(404, "channel does not exist or found");
    }
 
-   // console.log("Channel details ---->",channel);
+   
 
    return res.status(200).json(
       new ApiResponse(200, channel[0], "Channel fetched successfuly ")

@@ -22,14 +22,12 @@ dotenv.config();
         });
 
         // file uploaded
-        console.log("file uploaded on cloudinary, ", response.url);
         fs.unlinkSync(localFilePath);
         return response;
         } 
         
         catch (error) {
         fs.unlinkSync(localFilePath); // removing locally saved file on server
-                        console.log("ERROR IN CLOUDINARY FILE !!!", error)
 
 
         return null;
@@ -54,7 +52,6 @@ dotenv.config();
         const result = await cloudinary.uploader.destroy(publicId,{
             resource_type:type,
             invalidate:true});
-        console.log(result);
 
         return result;
             
