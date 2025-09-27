@@ -195,6 +195,7 @@ const user =   await User.findByIdAndUpdate(
    const options={
       httpOnly:true,
       secure:true,
+      sameSite:"none",
    }
    return res.status(200).clearCookie("accessToken",options).clearCookie("refreshToken", options)
    .json(
