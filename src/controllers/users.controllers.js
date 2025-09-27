@@ -397,10 +397,12 @@ const updateCoverImage = asyncHandler(async(req, res)=>{
       throw new ApiError(500, "Cover Image file not upload");
    }
 
+   if(getUser.coverImage){
    const response =await deleteOnCloudinary(getUser.coverImage);
    if(response.result!=="ok"){
       throw new ApiError(500, response.result);
    }
+}
    const user = await User.findByIdAndUpdate(
       req.user._id,
       {
