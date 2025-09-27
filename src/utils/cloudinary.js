@@ -12,8 +12,9 @@ dotenv.config();
 
     const uploadOnCloudinary = async(localFilePath)=>{
         try {
+            console.log("entering in uploadOnCloudinary function");
             if(!localFilePath){
-
+             console.log("cloudinary local file path not found, now returning");
             return null;
         }
 
@@ -23,12 +24,14 @@ dotenv.config();
 
         // file uploaded
         fs.unlinkSync(localFilePath);
+        console.log("file uploaded on cloudinary", response);
         return response;
         } 
         
         catch (error) {
         fs.unlinkSync(localFilePath); // removing locally saved file on server
-
+         
+        console.log("error while uploading file on cloudinary...", error);
 
         return null;
             
